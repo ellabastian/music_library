@@ -5,9 +5,16 @@ DatabaseConnection.connect('music_library')
 
 album_repository = AlbumRepository.new
 
-sql = 'Select id, title FROM albums;'
-result = DatabaseConnection.exec_params(sql, [])
+# sql = 'Select id, title FROM albums;'
+# result = DatabaseConnection.exec_params(sql, [])
 
-album_repository.all.each do |album|
-    p album
-end
+# album_repository.all.each do |album|
+#     p album
+# end
+
+album = album_repository.find(6)
+
+puts album.id
+puts album.title
+puts album.release_year
+

@@ -98,16 +98,27 @@ class StudentRepository
     # Returns a single Student object.
   end
 
-  # Add more methods below for each operation you'd like to implement.
 
-  # def create(student)
-  # end
+    #Takes album object in argument
+    #Doesn't return anything
+    def create(album)
+        # INSERT INTO albums
+        #     (title, release_year, artist_id)
+        #     VALUES($1, $2, $3);
+    end
 
-  # def update(student)
-  # end
 
-  # def delete(student)
-  # end
+    #Takes album object in argument
+    #Doesn't return anything    
+    def update(album)
+        # UPDATE albums 
+        # SET title = $1, release_year = $2, artist_id = $3
+        # WHERE id = $3;
+    end
+
+    def delete(id)
+        # DELETE FROM albums WHERE id = $1;
+    end
 end
 
 6. Write Test Examples
@@ -150,33 +161,49 @@ album.artist_id # =>
 
 repo = AlbumRepository.new
 
-album = repo.create('Pinkprint', 2011, 4)
-
-album.id # =>  
+album = Album.new
 album.name # => Pinkprint 
+album.release_year =>
 album.artist_id # => 4
+
+repo.create(album) => nil
+
+albums = repo.all
+
+last_album = album.last
+last_album.name =>
+last_album.genre =>
+
 
 # 4
 # Update an album
 
 repo = AlbumRepository.new
 
-album = repo.update(Pinkprint, Blueprint, 4)
+album = repo.find(1)
 
-album.id # =>  
-album.name # => Blueprint
-album.artist_id # => 4
+album.name = Born this way
+album.release_year = 2012
+album.artist_id = 1
+
+repo.update(album)
+
+updated_album = repo.find(1)
+
+updated_album.name =>
 
 # 5
 # Delete an album
 
 repo = AlbumRepository.new
 
-album = repo.delete(4)
+album = repo.find(1)
 
-album.id # =>  
-album.name # => 
-album.artist_id # => 
+repo.delete(album.id)
+
+all_albums = repo.all
+all_albums.length =>
+all_albums.first.id => 2
 
 
 7. Reload the SQL seeds before each test run
